@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/168bf4630f.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Vite App</title>
+  </head>
+  <body>
+    <script type="module" src="/src/main.ts"></script>
+    <nav>
+      <a href="/"> <i id="logo" class="fa-solid fa-code fa-2xl"></i></a>
+      <ul>
+        <li class="active"><a href="#home">Home</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div id="ham">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+    <section id="home">
+      <div class="flex">
+        <h1>OrJDev's Portfolio 😎</h1>
+        <p>
+          Hey, My Name Is Or, I'm Full Stack Developer And I'm passionate About
+          Building Things That People Love.
+        </p>
+        <div class="row media">
+          <div class="row">
+            <a href="https://github.com/OrJDev" target="_blank">
+              <i class="fa-brands fa-github fa-2xl"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/or-moshe-94bba6238/"
+              target="_blank"
+            >
+              <i class="fa-brands fa-linkedin fa-2xl"></i>
+            </a>
+          </div>
+          <span> | </span>
+          <a download href="./assets/res.pdf">View Resume</a>
+        </div>
+      </div>
+      <img src="./assets/dev.svg" />
+    </section>
+    <section id="skills">
+      <h1>Skills</h1>
+    </section>
+    <section id="contact">
+      <h1>Contact</h1>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,350 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+  --nav-bg: rgb(22, 22, 22);
+  --grayish: rgba(49, 49, 49, 1);
+  --bg: rgb(15, 15, 15, 1);
+  --primary: rgb(255, 224, 49);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+html {
+  user-select: none;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  background-color: var(--bg);
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+#ham {
+  display: none;
+}
+
+nav {
+  width: 100%;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+nav.bg {
+  background-color: var(--nav-bg);
+}
+
+nav > ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  margin-right: 2.5rem;
+}
+
+nav > ul li {
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: white;
+  font-family: "Roboto";
+}
+nav > ul li:not(.active):hover {
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+nav > ul li.active {
+  position: relative;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+nav > ul li.active::before {
+  content: "";
+  position: absolute;
+  bottom: -1.5px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--primary);
+}
+
+nav > button {
+  display: none;
+}
+
+section {
+  padding: 5rem;
+  /* margin-left: 1rem;
+  margin-right: 1rem; */
+  min-height: 35rem;
+  display: flex;
+  flex-direction: row;
+  /* gap: 8rem; */
+}
+
+section[id="home"] {
+  margin-top: 5rem;
+}
+section > * {
+  font-family: "Roboto", sans-serif;
+}
+
+section > div {
+  max-width: 45rem;
+}
+section a > i {
+  color: white;
+  transition: transform 0.2s ease-in-out;
+}
+section a > i:hover {
+  transform: scale(1.1);
+}
+
+section h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  transition: all 0.4s;
+}
+section p {
+  color: gray;
+  font-size: 1rem;
+  font-weight: 500;
+}
+section span {
+  color: var(--grayish);
+  font-size: 3rem;
+  font-weight: 600;
+}
+section span + a {
+  background-color: var(--primary);
+  color: white;
+  align-items: center;
+  display: flex;
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+  justify-content: center;
+  line-height: 1.2;
+}
+section span + a:hover {
+  transform: scale(1.05);
+}
+section h1:hover {
+  font-size: 2rem;
+}
+section img {
+  width: 35%;
+  min-width: 15rem;
+  max-width: 25rem;
+  object-fit: contain;
+}
+#logo {
+  color: white;
+  margin-left: 2rem;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  nav > ul {
+    display: none;
+  }
+  section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2.5rem;
+  }
+  section img {
+    margin-left: auto;
+  }
+  nav > ul.active {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    width: 75%;
+    min-height: 20rem;
+    background-color: var(--nav-bg);
+    gap: 0.3rem;
+    border-radius: 0.5rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: fade 0.5s;
+    align-items: flex-start;
+  }
+  #ham {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid white;
+    position: relative;
+  }
+  #ham > div {
+    display: block;
+    width: 60%;
+    height: 4px;
+    border-radius: 50px;
+    background-color: white;
+  }
+  #ham,
+  #ham > div {
+    transition: all 0.3s ease-in-out;
+  }
+  #ham.active > div:nth-child(1) {
+    transform: translateY(12px) rotate(45deg);
+  }
+  #ham.active > div:nth-child(2) {
+    opacity: 0;
+  }
+  #ham.active > div:nth-child(3) {
+    transform: translateY(-12px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 445px) {
+  section span + a {
+    max-width: 8rem;
+    max-height: 40px;
+    font-size: 80%;
+  }
+  section {
+    margin-left: -3rem;
+    flex-direction: column;
+  }
+  section span {
+    transform: rotate(90deg);
+  }
+  section h1 {
+    font-size: 1.1rem;
+  }
+  section h1:hover {
+    font-size: 1.4rem;
+  }
+  section p {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .media {
+    margin-top: 0.5rem;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 350px) {
+  /* section {
+    margin-left: -3rem;
+  } */
+  section img {
+    min-width: 100%;
+  }
+  #ham {
+    width: 2rem;
+    height: 2rem;
+    gap: 0.25rem;
+  }
+  #ham > div {
+    width: 50%;
+    height: 2px;
+  }
+  #ham.active > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+  #ham.active > div:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  #ham.active > div:nth-child(3) {
+    transform: translate(-50%, 50%) rotate(-45deg);
+  }
+}
+@keyframes fade {
+  from {
+    transform: translate(200%, -50%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
