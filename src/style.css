@@ -163,14 +163,15 @@ section > div {
   max-width: 45rem;
 }
 section[id="skills"] > div:not(:last-child) {
-  max-width: 20rem;
+  max-width: 30rem;
 }
 section[id="skills"] > div + div {
   max-width: 40rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
   transition: all 0.2s;
 }
 section[id="skills"] > div + div > p {
+  font-size: 1.2rem;
   transition: all 0.2s;
 }
 section[id="skills"] > div + div > p:hover {
@@ -336,7 +337,7 @@ section h1:hover {
 
 @media (max-width: 445px) {
   section span + a {
-    max-width: 8rem;
+    width: 10rem;
     max-height: 40px;
     font-size: 80%;
   }
