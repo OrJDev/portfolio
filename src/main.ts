@@ -29,7 +29,7 @@ mobileHam.addEventListener('click', (e) => {
 
 let nav = document.querySelector('nav');
 
-window.addEventListener('scroll', () => {
+let getCurrentSection = () => {
   nav?.classList.toggle('bg', window.scrollY >= 100)
   let hrefs = ['home', 'skills', 'contact']
   for (let i = 0; i < hrefs.length; i++) {
@@ -43,29 +43,28 @@ window.addEventListener('scroll', () => {
         let currentActiveElement = document.querySelector('nav ul li.active');
         currentActiveElement?.classList.toggle('active', false);
         navItems[i].classList.toggle('active', true);
+        for (let j = i; j >= 0; j--) {
+          // probably will be removed but its weird if the element fades in when it was already passed by
+          document.querySelector(`#${hrefs[j]}`)?.classList.toggle('active', true);
+        }
+        section.classList.toggle('active', true);
       }
     }
   }
-})
+}
+window.onload = () => getCurrentSection()
+window.addEventListener('scroll', () => getCurrentSection())
 
 document.querySelector('section[id="contact"] button')?.addEventListener('click', async (e) => {
   e.preventDefault();
-  let email = document.querySelector<HTMLInputElement>('section[id="contact"] input[type="email"]');
-  let message = document.querySelector<HTMLTextAreaElement>('section[id="contact"] textarea');
-  console.log({
-    from: email?.value,
-    message: message?.value
-  })
+  let email = document.querySelector<HTMLInputElement>('section[id="contact"] input[type="email"]')!;
+  let message = document.querySelector<HTMLTextAreaElement>('section[id="contact"] textarea')!;
   await mailJS.send('service_6fqtfhu', 'template_8loz1j6', {
-    from: email?.value,
-    message: message?.value
+    from: email.value,
+    message: message.value
   }, 'Y8QswEa90HYviUy6C')
-  if (email) {
-    email.value = '';
-  }
-  if (message) {
-    message.value = '';
-  }
+  email.value = '';
+  message.value = '';
 })
 
 export { }
