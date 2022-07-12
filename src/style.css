@@ -167,7 +167,7 @@ section[id="skills"] > div:not(:last-child) {
 }
 section[id="skills"] > div + div {
   max-width: 40rem;
-  margin-top: 3rem;
+  margin-top: 6.5rem;
   transition: all 0.2s;
 }
 section[id="skills"] > div + div > p {
@@ -177,6 +177,28 @@ section[id="skills"] > div + div > p {
 section[id="skills"] > div + div > p:hover {
   transform: scale(1.2);
   color: whitesmoke;
+}
+section[id="contact"] {
+  gap: 0.7rem;
+}
+section[id="contact"] > input,
+section[id="contact"] > textarea {
+  padding: 0.5rem;
+  background: none;
+  border: 1px solid var(--primary);
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  caret-color: var(--primary);
+}
+section[id="contact"] > input {
+  width: 100%;
+  max-width: 15rem;
+}
+section[id="contact"] > input:focus,
+section[id="contact"] > textarea:focus {
+  outline: none;
 }
 section a > img {
   color: white;
@@ -209,7 +231,8 @@ section span {
   font-size: 3rem;
   font-weight: 600;
 }
-section span + a {
+section span + a,
+section[id="contact"] > textarea + button {
   background-color: var(--primary);
   color: white;
   align-items: center;
@@ -222,8 +245,16 @@ section span + a {
   justify-content: center;
   line-height: 1.2;
 }
-section span + a:hover {
+section[id="contact"] > textarea + button {
+  width: 80%;
+  max-width: 14rem;
+}
+section span + a:hover,
+section[id="contact"] > textarea + button:hover {
   transform: scale(1.05);
+}
+section[id="contact"] > textarea + button:focus {
+  outline: none;
 }
 section h1:hover {
   font-size: 2rem;
@@ -287,6 +318,7 @@ section h1:hover {
     margin-left: auto;
   }
   nav > ul.active {
+    position: fixed;
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
@@ -295,7 +327,6 @@ section h1:hover {
     background-color: var(--nav-bg);
     gap: 0.3rem;
     border-radius: 0.5rem;
-    position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);

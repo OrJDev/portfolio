@@ -1,3 +1,5 @@
+import mailJS from '@emailjs/browser'
+
 let navItems = document.querySelectorAll<HTMLLIElement>('nav ul li')!;
 let navList = document.querySelector<HTMLUListElement>('nav ul')!;
 let mobileHam = document.querySelector('#ham')!;
@@ -43,6 +45,26 @@ window.addEventListener('scroll', () => {
         navItems[i].classList.toggle('active', true);
       }
     }
+  }
+})
+
+document.querySelector('section[id="contact"] button')?.addEventListener('click', async (e) => {
+  e.preventDefault();
+  let email = document.querySelector<HTMLInputElement>('section[id="contact"] input[type="email"]');
+  let message = document.querySelector<HTMLTextAreaElement>('section[id="contact"] textarea');
+  console.log({
+    from: email?.value,
+    message: message?.value
+  })
+  await mailJS.send('service_6fqtfhu', 'template_8loz1j6', {
+    from: email?.value,
+    message: message?.value
+  }, 'Y8QswEa90HYviUy6C')
+  if (email) {
+    email.value = '';
+  }
+  if (message) {
+    message.value = '';
   }
 })
 
