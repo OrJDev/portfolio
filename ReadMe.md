@@ -1,3 +1,3 @@
 # Portfolio
 
-vanila responsive portfolio - under development
+vanila responsive portfolio
