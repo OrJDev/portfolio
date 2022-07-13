@@ -4,6 +4,7 @@ let hrefs = ['home', 'skills', 'contact']
 let navItems = document.querySelectorAll<HTMLLIElement>('nav ul li')!;
 let navList = document.querySelector<HTMLUListElement>('nav ul')!;
 let mobileHam = document.querySelector('#ham')!;
+let imgs = document.querySelectorAll<HTMLImageElement>('.row > img');
 
 if (hrefs.length !== navItems.length) {
   throw new Error('hrefs and navItems are not the same length')
@@ -26,6 +27,9 @@ if (hrefs.length !== navItems.length) {
 
   mobileHam.addEventListener('click', (e) => {
     e.preventDefault();
+    imgs.forEach(e => {
+      e.style.zIndex = mobileHam.classList.contains('active') ? '1' : '-1';
+    })
     navList.classList.toggle('active');
     mobileHam.classList.toggle('active')
   })
@@ -66,4 +70,5 @@ document.querySelector('section[id="contact"] button')?.addEventListener('click'
   email.value = '';
   message.value = '';
 })
+
 
