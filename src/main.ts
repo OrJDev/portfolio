@@ -66,3 +66,4 @@ document.querySelector('section[id="contact"] button')?.addEventListener('click'
   email.value = '';
   message.value = '';
 })
+
