@@ -5,6 +5,9 @@ let navItems = document.querySelectorAll<HTMLLIElement>('nav ul li')!;
 let navList = document.querySelector<HTMLUListElement>('nav ul')!;
 let mobileHam = document.querySelector('#ham')!;
 let imgs = document.querySelectorAll<HTMLImageElement>('.row > img');
+let scrollTopBtn = document.querySelector<HTMLButtonElement>('body > button')!;
+
+const scrollToTop = () => window.scrollTo(0, 0);;
 
 if (hrefs.length !== navItems.length) {
   throw new Error('hrefs and navItems are not the same length')
@@ -14,7 +17,7 @@ if (hrefs.length !== navItems.length) {
       e.preventDefault();
       let href = navItem.firstElementChild?.getAttribute('href')!;
       if (href.toLowerCase().endsWith('home')) {
-        window.scrollTo(0, 0);
+        scrollToTop();
       } else {
         document.querySelector(href)!.scrollIntoView();
       }
@@ -27,16 +30,16 @@ if (hrefs.length !== navItems.length) {
 
   mobileHam.addEventListener('click', (e) => {
     e.preventDefault();
-    imgs.forEach(e => {
-      e.style.zIndex = mobileHam.classList.contains('active') ? '1' : '-1';
-    })
+    let zIndex = mobileHam.classList.contains('active') ? '1' : '-1';
+    imgs.forEach(e => e.style.zIndex = zIndex);
     navList.classList.toggle('active');
     mobileHam.classList.toggle('active')
   })
 
 
   let getCurrentSection = () => {
-    document.querySelector('nav')?.classList.toggle('bg', window.scrollY >= 100)
+    let shouldBeEnabled = window.scrollY >= 100
+    document.querySelector('nav')?.classList.toggle('bg', shouldBeEnabled)
     for (let i = 0; i < hrefs.length; i++) {
       let href = hrefs[i];
       let section = document.querySelector(`#${href}`) as HTMLElement | null;
@@ -51,6 +54,8 @@ if (hrefs.length !== navItems.length) {
           for (let j = i; j >= 0; j--)
             document.querySelector(`#${hrefs[j]}`)?.classList.toggle('active', true);
           section.classList.toggle('active', true);
+          scrollTopBtn.classList.toggle('active',
+            shouldBeEnabled && href !== 'home')
         }
       }
     }
@@ -59,6 +64,7 @@ if (hrefs.length !== navItems.length) {
   window.addEventListener('scroll', () => getCurrentSection())
 }
 
+scrollTopBtn.addEventListener('click', () => scrollToTop());
 document.querySelector('section[id="contact"] button')?.addEventListener('click', async (e) => {
   e.preventDefault();
   let email = document.querySelector<HTMLInputElement>('section[id="contact"] input[type="email"]')!;

@@ -298,6 +298,27 @@ section h1:hover {
   align-items: center;
 }
 
+body > button.active {
+  color: var(--primary);
+  border: 1px solid var(--grayish);
+  padding: 0.5rem;
+  border-radius: 1rem;
+  position: fixed;
+  bottom: 1.3rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  animation: fadeIn 0.5s;
+  z-index: 9999;
+}
+body > button.active:hover {
+  transform: scale(1.1);
+}
+body > button.active:focus {
+  outline: none;
+}
+
 @keyframes slideIn {
   from {
     transform: translate(200%, -50%);
