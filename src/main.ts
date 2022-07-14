@@ -4,8 +4,8 @@ let hrefs = ['home', 'skills', 'contact']
 let navItems = document.querySelectorAll<HTMLLIElement>('nav ul li')!;
 let navList = document.querySelector<HTMLUListElement>('nav ul')!;
 let mobileHam = document.querySelector('#ham')!;
-let imgs = document.querySelectorAll<HTMLImageElement>('.row > img');
 let scrollTopBtn = document.querySelector<HTMLButtonElement>('body > button')!;
+let main = document.querySelector('main')!
 
 const scrollToTop = () => window.scrollTo(0, 0);;
 
@@ -31,7 +31,7 @@ if (hrefs.length !== navItems.length) {
   mobileHam.addEventListener('click', (e) => {
     e.preventDefault();
     let zIndex = mobileHam.classList.contains('active') ? '1' : '-1';
-    imgs.forEach(e => e.style.zIndex = zIndex);
+    main.style.zIndex = zIndex;
     navList.classList.toggle('active');
     mobileHam.classList.toggle('active')
   })
