@@ -290,12 +290,6 @@ main {
   object-fit: contain;
 }
 
-.row > img:hover {
-  transform: scale(1.5) rotate(0deg);
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
-}
-
 .flex {
   display: flex;
   flex-direction: column;
@@ -366,6 +360,13 @@ body > button.active:focus {
 @media (hover: none) {
   .row > img {
     animation: Spin infinite 20s linear;
+  }
+}
+@media (hover: hover) {
+  .row > img:hover {
+    transform: scale(1.5) rotate(0deg);
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
   }
 }
 
